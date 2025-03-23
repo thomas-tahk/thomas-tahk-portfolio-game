@@ -2,6 +2,7 @@ import makeKaplayCtx from "./kaplayCtx";
 
 export default async function initGame() {
     const k = makeKaplayCtx()
+    // player sprite and designating which frames are for which animations
     k.loadSprite("player", "./sprites/player.png", {
         sliceX: 4, // number of frames per row
         sliceY: 8, // number of frames per column
@@ -25,4 +26,26 @@ export default async function initGame() {
             "walk-right-down-idle": 28
         }
     })
+    // loading various fonts and sprites to be used in the project
+    k.loadFont("ibm-regular", "./fonts/IBMPlexSans-Regular.ttf");
+    k.loadFont("ibm-bold", "./fonts/IBMPlexSans-Bold.ttf");
+    k.loadSprite("github-logo", "./logos/github-logo.png");
+    k.loadSprite("linkedin-logo", "./logos/linkedin-logo.png");
+    k.loadSprite("youtube-logo", "./logos/youtube-logo.png");
+    k.loadSprite("x-logo", "./logos/x-logo.png");
+    k.loadSprite("substack-logo", "./logos/substack-logo.png");
+    k.loadSprite("javascript-logo", "./logos/js-logo.png");
+    k.loadSprite("typescript-logo", "./logos/ts-logo.png");
+    k.loadSprite("react-logo", "./logos/react-logo.png");
+    k.loadSprite("nextjs-logo", "./logos/nextjs-logo.png");
+    k.loadSprite("postgres-logo", "./logos/postgres-logo.png");
+    k.loadSprite("html-logo", "./logos/html-logo.png");
+    k.loadSprite("css-logo", "./logos/css-logo.png");
+    k.loadSprite("tailwind-logo", "./logos/tailwind-logo.png");
+    k.loadSprite("python-logo", "./logos/python-logo.png");
+    k.loadSprite("email-logo", "./logos/email-logo.png");
+    k.loadSprite("sonic-js", "./projects/sonic-js.png");
+    k.loadSprite("kirby-ts", "./projects/kirby-ts.png");
+    k.loadSprite("platformer-js", "./projects/platformer-js.png");
+    k.loadShaderURL("tiledPattern", null, "./shaders/tiledPattern.frag");
 }
