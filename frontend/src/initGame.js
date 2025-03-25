@@ -44,12 +44,22 @@ export default async function initGame() {
     k.loadSprite("tailwind-logo", "./logos/tailwind-logo.png");
     k.loadSprite("python-logo", "./logos/python-logo.png");
     k.loadSprite("email-logo", "./logos/email-logo.png");
-    k.loadShaderURL("tiledPattern", null, "./shaders/tiledPattern.frag");
-
-    // TODO: import Shader
     // a shader is a program that runs on gpu that changes color of pixel on screen
     // kinda like a printing press for computer screens
     // we're using a fragment shader program written in glsl specific to kaplay
-    
-
+    k.loadShaderURL("tiledPattern", null, "./shaders/tiledPattern.frag");
+    // gameobject that displays the shader
+    const tiledBackground = k.add([
+        k.uvquad(k.width(), k.height()),
+        k.shader("tiledPattern", () => ({
+            u_time: k.time() / 20,
+            u_color1: k.Color.fromHex(PALETTE.color1),
+            u_color2: k.Color.fromHex(PALETTE.color2),
+            u_speed: k.vec2(1, -1),  // feel free to change this to liking
+            u_aspect: k.width() / k.height(),
+            u_size: 5,
+    })),
+    k.pos(0),
+    k.fixed()
+    ])
 }
