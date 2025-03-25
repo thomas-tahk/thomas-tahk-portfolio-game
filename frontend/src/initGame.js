@@ -44,8 +44,12 @@ export default async function initGame() {
     k.loadSprite("tailwind-logo", "./logos/tailwind-logo.png");
     k.loadSprite("python-logo", "./logos/python-logo.png");
     k.loadSprite("email-logo", "./logos/email-logo.png");
-    k.loadSprite("sonic-js", "./projects/sonic-js.png");
-    k.loadSprite("kirby-ts", "./projects/kirby-ts.png");
-    k.loadSprite("platformer-js", "./projects/platformer-js.png");
     k.loadShaderURL("tiledPattern", null, "./shaders/tiledPattern.frag");
+
+    // TODO: import Shader
+    // a shader is a program that runs on gpu that changes color of pixel on screen
+    // kinda like a printing press for computer screens
+    // we're using a fragment shader program written in glsl specific to kaplay
+    
+
 }
