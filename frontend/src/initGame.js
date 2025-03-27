@@ -1,5 +1,6 @@
 import makeKaplayCtx from "./kaplayCtx";
 import { PALETTE } from "./constants";
+import makePlayer from "./entities/Player";
 
 export default async function initGame() {
     const k = makeKaplayCtx()
@@ -64,9 +65,14 @@ export default async function initGame() {
     k.fixed()
     ])
 
+    // makes tiled pattern responsive to window resizing
     k.onResize(() => {
         tiledBackground.width = k.width()
         tiledBackground.height = k.height()
         tiledBackground.uniform.u_aspect = k.width() / k.height()
     })
+
+    // create player object in center of current canvas, with specified speed. feel free to change values
+    makePlayer(k, k.vec2(k.center()), 700)
+
 }
