@@ -50,6 +50,15 @@ export default async function initGame() {
     // kinda like a printing press for computer screens
     // we're using a fragment shader program written in glsl specific to kaplay
     k.loadShaderURL("tiledPattern", null, "/shaders/tiledPattern.frag");
+    
+    // player character scaling - deprecated?
+    if (k.width() < 1000) {
+        k.camScale(k.vec2(0.5))
+    } else {
+        k.camScale(k.vec2(0.8))
+    }
+    
+    
     // gameobject that displays the shader
     const tiledBackground = k.add([
         k.uvquad(k.width(), k.height()),
