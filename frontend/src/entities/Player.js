@@ -46,7 +46,73 @@ export default function makePlayer(k, posVec2, speed) {
         if (isMouseDown) {
             player.direction = worldMousePos.sub(player.pos).unit()
         }
-        // Todo implement animations
+        // implement animations based on direction of player
+        // when to play idle
+        if (player.direction.eq(k.vec2(0, 0)) && 
+        !player.getCurAnim().includes("idle")) {
+            player.play(`${player.directionName}-idle`)
+            return
+        }
+
+        if (
+            player.direction.x > 0 &&
+            player.direction.y > -0.5 &&
+            player.direction.y < 0.5
+          ) {
+            player.directionName = "walk-right";
+          }
+      
+          if (
+            player.direction.x < 0 &&
+            player.direction.y > -0.5 &&
+            player.direction.y < 0.5
+          )
+            player.directionName = "walk-left";
+      
+          if (player.direction.x < 0 && player.direction.y < -0.8)
+            player.directionName = "walk-up";
+      
+          if (player.direction.x < 0 && player.direction.y > 0.8)
+            player.directionName = "walk-down";
+      
+          if (
+            player.direction.x < 0 &&
+            player.direction.y > -0.8 &&
+            player.direction.y < -0.5
+          )
+            player.directionName = "walk-left-up";
+      
+          if (
+            player.direction.x < 0 &&
+            player.direction.y > 0.5 &&
+            player.direction.y < 0.8
+          )
+            player.directionName = "walk-left-down";
+      
+          if (
+            player.direction.x > 0 &&
+            player.direction.y < -0.5 &&
+            player.direction.y > -0.8
+          )
+            player.directionName = "walk-right-up";
+      
+          if (
+            player.direction.x > 0 &&
+            player.direction.y > 0.5 &&
+            player.direction.y < 0.8
+          )
+            player.directionName = "walk-right-down";
+      
+          // play any animation that is not idle, prevent replaying if you're already playing the correct animation. 
+          if (player.getCurAnim().name !== player.directionName) {
+            player.play(player.directionName);
+          }
+      
+          // move player in the direction they are facing
+          if (player.direction.x && player.direction.y) {
+            player.move(player.direction.scale(DIAGONAL_FACTOR * speed));
+            return;
+          }
 
         player.move(player.direction.scale(speed))
     })
