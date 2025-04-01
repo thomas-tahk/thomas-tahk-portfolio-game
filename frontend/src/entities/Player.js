@@ -1,3 +1,4 @@
+import { DIAGONAL_FACTOR } from "../constants";
 
 // make instance of a player with the following properties
 export default function makePlayer(k, posVec2, speed) {
@@ -49,7 +50,7 @@ export default function makePlayer(k, posVec2, speed) {
         // implement animations based on direction of player
         // when to play idle
         if (player.direction.eq(k.vec2(0, 0)) && 
-        !player.getCurAnim().includes("idle")) {
+        !player.getCurAnim().name.includes("idle")) {
             player.play(`${player.directionName}-idle`)
             return
         }
