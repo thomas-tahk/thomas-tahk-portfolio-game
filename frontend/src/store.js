@@ -15,3 +15,5 @@ export const chosenProjectDataAtom = atom({
 })
 
 export const cameraZoomValueAtom = atom({value : 1})
+
+export const store = createStore()
