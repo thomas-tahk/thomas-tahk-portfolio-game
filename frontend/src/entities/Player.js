@@ -1,4 +1,5 @@
 import { DIAGONAL_FACTOR } from "../constants";
+import { isEmailModalVisibleAtom, isProjectModalVisibleAtom, isSocialModalVisibleAtom } from "../store";
 
 // make instance of a player with the following properties
 export default function makePlayer(k, posVec2, speed) {
@@ -37,9 +38,20 @@ export default function makePlayer(k, posVec2, speed) {
 
     player.onUpdate(() => {
         if (!k.camPos().eq(player.pos)) {
-            k.tween(k.camPos(), player.pos, 0.2, (newPost) => k.camPos(newPost),
-        k.easings.linear
-    )
+            k.tween(
+                k.camPos(), 
+                player.pos, 
+                0.2, 
+                (newPost) => k.camPos(newPost),
+                k.easings.linear
+            )
+        }
+
+        if (
+            store.get(isSocialModalVisibleAtom) || 
+            store.get(isEmailModalVisibleAtom) || 
+            store.get(isProjectModalVisibleAtom)) {
+
         }
 
         player.direction = k.vec2(0, 0)
