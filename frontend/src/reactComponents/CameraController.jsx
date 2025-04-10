@@ -12,7 +12,12 @@ export default function CameraController() {
                     setCamZoomValue(newZoomValue)
                 }
             }}>+</button>
-            <button>-</button>
+            <button onClick={() => {
+                const newZoomValue = camZoomValue - 0.2
+                if (newZoomValue <= ZOOM_MAX_BOUND && newZoomValue >= ZOOM_MIN_BOUND) {
+                    setCamZoomValue(newZoomValue)
+                }
+            }}>-</button>
         </div>
     )
 }
