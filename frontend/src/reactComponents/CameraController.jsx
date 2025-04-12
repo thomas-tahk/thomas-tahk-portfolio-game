@@ -4,14 +4,17 @@ export default function CameraController() {
     const [camZoomValue, setCamZoomValue] = useAtom(cameraZoomValueAtom)
 
     return (
-        <div>
+        <div className="camera-controller">
             <button
+            className="camera-controller-btnn"
             onClick={() => {
                 const newZoomValue = camZoomValue + 0.2
                 if (newZoomValue <= ZOOM_MAX_BOUND && newZoomValue >= ZOOM_MIN_BOUND) {
                     setCamZoomValue(newZoomValue)
                 }
-            }}>+</button>
+            }}>
+                +
+                </button>
             <button onClick={() => {
                 const newZoomValue = camZoomValue - 0.2
                 if (newZoomValue <= ZOOM_MAX_BOUND && newZoomValue >= ZOOM_MIN_BOUND) {
