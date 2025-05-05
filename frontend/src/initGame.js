@@ -1,3 +1,4 @@
+import makeSection from "./components/Section";
 import makeKaplayCtx from "./kaplayCtx";
 import { PALETTE } from "./constants";
 import makePlayer from "./entities/Player";
@@ -90,6 +91,8 @@ export default async function initGame() {
         tiledBackground.height = k.height()
         tiledBackground.uniform.u_aspect = k.width() / k.height()
     })
+    // incomplete below
+    // makeSection(k, k.vec2(k.center().x, k.center().y - 400) )
 
     // create player object in center of current canvas, with specified speed. feel free to change values
     makePlayer(k, k.vec2(k.center()), 700)
