@@ -1,4 +1,4 @@
-import {PALETTE} from "./constants"
+import {PALETTE} from "../constants"
 
 export default function makeSection(k, posVec2, sectionName, onCollide) {
     const section = k.add([

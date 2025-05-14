@@ -91,8 +91,34 @@ export default async function initGame() {
         tiledBackground.height = k.height()
         tiledBackground.uniform.u_aspect = k.width() / k.height()
     })
-    // incomplete below
-    // makeSection(k, k.vec2(k.center().x, k.center().y - 400) )
+    // intractive squares/areas for external stuff
+    makeSection(
+        k, 
+        k.vec2(k.center().x, k.center().y - 400), 
+        "About", 
+        (parent) => {
+    })
+
+    makeSection(
+        k, 
+        k.vec2(k.center().x-400, k.center().y), 
+        "Skills",
+        (parent) => {}
+    )
+
+    makeSection(
+        k, 
+        k.vec2(k.center().x+400, k.center().y), 
+        "Experience",
+        (parent) => {}
+    )
+
+     makeSection(
+        k, 
+        k.vec2(k.center().x, k.center().y+400), 
+        "Projects",
+        (parent) => {}
+    )
 
     // create player object in center of current canvas, with specified speed. feel free to change values
     makePlayer(k, k.vec2(k.center()), 700)

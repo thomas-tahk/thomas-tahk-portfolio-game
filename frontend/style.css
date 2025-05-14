@@ -11,7 +11,7 @@
 /* 
     reminder to change these or to get ttf files in the right place
 */
-@font-face {
+/* @font-face {
     font-family: "ibm-bold";
     src: url(/fonts/IBMPlexSans-Bold.ttf);
 }
@@ -19,7 +19,7 @@
 @font-face {
     font-family: "ibm-regular";
     src: url(/fonts/IBMPlexSans-Regular.ttf);
-}
+} */
 
 :root {
     font-family: "ibm-bold";
