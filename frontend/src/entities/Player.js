@@ -88,54 +88,33 @@ export default function makePlayer(k, posVec2, speed) {
             return
         }
 
-        if (
-            player.direction.x > 0 &&
-            player.direction.y > -0.5 &&
-            player.direction.y < 0.5
-          ) {
-            player.directionName = "walk-right";
-          }
-      
-          if (
-            player.direction.x < 0 &&
-            player.direction.y > -0.5 &&
-            player.direction.y < 0.5
-          )
-            player.directionName = "walk-left";
-      
-          if (player.direction.x < 0 && player.direction.y < -0.8)
-            player.directionName = "walk-up";
-      
-          if (player.direction.x < 0 && player.direction.y > 0.8)
-            player.directionName = "walk-down";
-      
-          if (
-            player.direction.x < 0 &&
-            player.direction.y > -0.8 &&
-            player.direction.y < -0.5
-          )
-            player.directionName = "walk-left-up";
-      
-          if (
-            player.direction.x < 0 &&
-            player.direction.y > 0.5 &&
-            player.direction.y < 0.8
-          )
-            player.directionName = "walk-left-down";
-      
-          if (
-            player.direction.x > 0 &&
-            player.direction.y < -0.5 &&
-            player.direction.y > -0.8
-          )
-            player.directionName = "walk-right-up";
-      
-          if (
-            player.direction.x > 0 &&
-            player.direction.y > 0.5 &&
-            player.direction.y < 0.8
-          )
-            player.directionName = "walk-right-down";
+        // Pure directions first (more priority)
+        if (Math.abs(player.direction.y) > Math.abs(player.direction.x)) {
+            // Vertical movement is stronger
+            if (player.direction.y < -0.7) {
+                player.directionName = "walk-up";
+            } else if (player.direction.y > 0.7) {
+                player.directionName = "walk-down";
+            }
+        } else if (Math.abs(player.direction.x) > Math.abs(player.direction.y)) {
+            // Horizontal movement is stronger
+            if (player.direction.x > 0.7) {
+                player.directionName = "walk-right";
+            } else if (player.direction.x < -0.7) {
+                player.directionName = "walk-left";
+            }
+        } else {
+            // Diagonal movements (when x and y are roughly equal)
+            if (player.direction.x > 0 && player.direction.y < 0) {
+                player.directionName = "walk-right-up";
+            } else if (player.direction.x > 0 && player.direction.y > 0) {
+                player.directionName = "walk-right-down";
+            } else if (player.direction.x < 0 && player.direction.y < 0) {
+                player.directionName = "walk-left-up";
+            } else if (player.direction.x < 0 && player.direction.y > 0) {
+                player.directionName = "walk-left-down";
+            }
+        }
       
           // play any animation that is not idle, prevent replaying if you're already playing the correct animation. 
           if (player.getCurAnim().name !== player.directionName) {
