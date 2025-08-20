@@ -238,7 +238,7 @@ export default async function initGame() {
     // Add collision detection for social circles
     githubCircle.onCollide("player", () => {
         console.log("Entered GitHub circle!")
-        store.set(selectedLinkAtom, "https://github.com/thomasthakk")
+        store.set(selectedLinkAtom, "https://github.com/thomas-tahk")
         store.set(selectedLinkDescriptionAtom, "Check out my GitHub profile to see my code and projects!")
         store.set(isSocialModalVisibleAtom, true)
     })
@@ -250,7 +250,7 @@ export default async function initGame() {
 
     linkedinCircle.onCollide("player", () => {
         console.log("Entered LinkedIn circle!")
-        store.set(selectedLinkAtom, "https://linkedin.com/in/thomas-tahk")
+        store.set(selectedLinkAtom, "https://linkedin.com/in/thomas-tahk-dev/")
         store.set(selectedLinkDescriptionAtom, "Connect with me on LinkedIn for professional networking!")
         store.set(isSocialModalVisibleAtom, true)
     })
