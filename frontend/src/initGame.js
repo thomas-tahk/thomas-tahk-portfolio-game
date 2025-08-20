@@ -398,6 +398,6 @@ export default async function initGame() {
     }
 
     // create player object nudged up a bit more for final positioning
-    makePlayer(k, k.vec2(k.center().x, k.center().y - k.height() * 0.4), 700)
+    makePlayer(k, k.vec2(k.center().x, k.center().y), 700)
 
 }
