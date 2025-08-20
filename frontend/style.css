@@ -65,7 +65,6 @@ html {
     width: 100vw;
     height: 100vh;
     backdrop-filter: blur(2px);
-    transform: translate(-20vw, -21.5vh);
 }
 
 .modal-content {
