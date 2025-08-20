@@ -48,4 +48,5 @@ This is a portfolio website presented as a simplified 2D game, inspired by JSLeg
 
 ## Session Notes
 - **Documentation Policy**: Claude will update this file with progress after each meaningful session
+- **Testing Preference**: User prefers to run `npm run dev` themselves in a separate terminal to observe, analyze, and give feedback. Claude should NOT run the dev server directly.
 - **Known Issues**: Kaplay coordinate system has unexplained offset - using workaround rather than root cause fix

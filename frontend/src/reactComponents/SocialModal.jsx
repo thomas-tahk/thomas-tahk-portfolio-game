@@ -1,10 +1,10 @@
 import { useAtom, useAtomValue } from "jotai";
-import { isSocialModalVisibleAtom, selectedLinkAtom } from "../store";
+import { isSocialModalVisibleAtom, selectedLinkAtom, selectedLinkDescriptionAtom } from "../store";
 
 export default function SocialModal() { 
     const [isVisible, setIsVisible] = useAtom(isSocialModalVisibleAtom)
     const selectedLink = useAtomValue(selectedLinkAtom)
-    const selectedLinkDescription = useAtomValue(selectedLinkAtom)
+    const selectedLinkDescription = useAtomValue(selectedLinkDescriptionAtom)
 
     const buttons = [
         { id: 0,
@@ -29,7 +29,7 @@ export default function SocialModal() {
                 <h1>Do you want to open this link?</h1>
                 <span>{selectedLink}</span>
                 <p>{selectedLinkDescription}</p>
-                <div className-="modal-btn-container">
+                <div className="modal-btn-container">
                     {buttons.map((button) => (
                         <button key={button.id} className="modal-btn" onClick={button.handler}>
                             {button.name}

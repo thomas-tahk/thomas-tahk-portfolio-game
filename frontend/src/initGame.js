@@ -2,7 +2,7 @@ import makeSection from "./components/Section";
 import makeKaplayCtx from "./kaplayCtx";
 import { PALETTE } from "./constants";
 import makePlayer from "./entities/Player";
-import { cameraZoomValueAtom, store, isAboutModalVisibleAtom, isSkillsModalVisibleAtom, isExperienceModalVisibleAtom, isProjectModalVisibleAtom } from "./store";
+import { cameraZoomValueAtom, store, isAboutModalVisibleAtom, isSkillsModalVisibleAtom, isExperienceModalVisibleAtom, isProjectModalVisibleAtom, isSocialModalVisibleAtom, selectedLinkAtom, selectedLinkDescriptionAtom } from "./store";
 
 export default async function initGame() {
     const k = makeKaplayCtx()
@@ -204,7 +204,7 @@ export default async function initGame() {
         k.pos(k.center().x + k.width() * 0.15, k.center().y - k.height() * 0.65),
     ])
 
-    // Social circles - spaced down from text labels
+    // Social circles with collision detection
     const githubCircle = k.add([
         k.circle(k.height() * 0.06), // Smaller circles
         k.anchor("center"),
@@ -235,6 +235,43 @@ export default async function initGame() {
         "gmail-social"
     ])
 
+    // Add collision detection for social circles
+    githubCircle.onCollide("player", () => {
+        console.log("Entered GitHub circle!")
+        store.set(selectedLinkAtom, "https://github.com/thomasthakk")
+        store.set(selectedLinkDescriptionAtom, "Check out my GitHub profile to see my code and projects!")
+        store.set(isSocialModalVisibleAtom, true)
+    })
+
+    githubCircle.onCollideEnd("player", () => {
+        console.log("Exited GitHub circle!")
+        store.set(isSocialModalVisibleAtom, false)
+    })
+
+    linkedinCircle.onCollide("player", () => {
+        console.log("Entered LinkedIn circle!")
+        store.set(selectedLinkAtom, "https://linkedin.com/in/thomas-tahk")
+        store.set(selectedLinkDescriptionAtom, "Connect with me on LinkedIn for professional networking!")
+        store.set(isSocialModalVisibleAtom, true)
+    })
+
+    linkedinCircle.onCollideEnd("player", () => {
+        console.log("Exited LinkedIn circle!")
+        store.set(isSocialModalVisibleAtom, false)
+    })
+
+    gmailCircle.onCollide("player", () => {
+        console.log("Entered Gmail circle!")
+        store.set(selectedLinkAtom, "mailto:tomtahk27@gmail.com")
+        store.set(selectedLinkDescriptionAtom, "Send me an email to get in touch!")
+        store.set(isSocialModalVisibleAtom, true)
+    })
+
+    gmailCircle.onCollideEnd("player", () => {
+        console.log("Exited Gmail circle!")
+        store.set(isSocialModalVisibleAtom, false)
+    })
+
 
     // Interactive squares/areas for portfolio sections - more spacing
     makeSection(
@@ -258,10 +295,16 @@ export default async function initGame() {
         (section) => {
             console.log("Entered Skills section!")
             store.set(isSkillsModalVisibleAtom, true)
+            // Reset logos to initial positions when re-entering (if any exist)
+            if (spawnedLogos.length > 0) {
+                spawnTechLogos()
+            }
         },
         (section) => {
             console.log("Exited Skills section!")
             store.set(isSkillsModalVisibleAtom, false)
+            // Spawn logos when exiting (first time or reset)
+            spawnTechLogos()
         }
     )
 
@@ -292,6 +335,67 @@ export default async function initGame() {
             store.set(isProjectModalVisibleAtom, false)
         }
     )
+
+    // Tech stack logos for Skills section interactivity
+    let spawnedLogos = []
+    
+    function spawnTechLogos() {
+        // Clear any existing logos first
+        clearTechLogos()
+        
+        const logoData = [
+            { name: "javascript-logo", scale: 0.5 },
+            { name: "typescript-logo", scale: 0.5 },
+            { name: "react-logo", scale: 0.4 },
+            { name: "nextjs-logo", scale: 0.6 },
+            { name: "html-logo", scale: 0.5 },
+            { name: "css-logo", scale: 0.5 },
+            { name: "tailwind-logo", scale: 0.6 },
+            { name: "python-logo", scale: 0.4 },
+            { name: "postgres-logo", scale: 0.4 }
+        ]
+        
+        // Skills section position (reference point)
+        const skillsPos = k.vec2(k.center().x - k.width() * 0.3, k.center().y + k.height() * 0.1)
+        
+        // Create 3x3 grid to the left of Skills section with even more offset and spacing
+        const startX = skillsPos.x - k.width() * 0.5   // Even more offset from Skills square
+        const startY = skillsPos.y - k.height() * 0.2   // Much higher starting position
+        const spacing = k.height() * 0.15  // Much more spacing between logos
+        
+        logoData.forEach((logoInfo, index) => {
+            const row = Math.floor(index / 3)
+            const col = index % 3
+            
+            const logo = k.add([
+                k.sprite(logoInfo.name),
+                k.scale(logoInfo.scale),
+                k.anchor("center"),
+                k.area(),
+                k.body({ 
+                    jumpForce: 0,     // Disable jumping
+                    mass: 0.1,        // Very light mass
+                    friction: 0.3,    // Low friction for easy sliding
+                    bounce: 0.8       // High bounce for dynamic feel
+                }), 
+                k.pos(startX + col * spacing, startY + row * spacing),
+                "tech-logo"
+            ])
+            
+            spawnedLogos.push(logo)
+        })
+        
+        console.log(`Spawned ${spawnedLogos.length} tech logos!`)
+    }
+    
+    function clearTechLogos() {
+        spawnedLogos.forEach(logo => {
+            if (logo.exists()) {
+                logo.destroy()
+            }
+        })
+        spawnedLogos = []
+    }
 
     // create player object nudged up a bit more for final positioning
     makePlayer(k, k.vec2(k.center().x, k.center().y - k.height() * 0.4), 700)

@@ -10,6 +10,7 @@ export default function SkillsModal() {
       <div className="modal skills-modal">
         <div className="modal-content">
           <h1>{skillsData.title}</h1>
+          <p className="skills-interaction-hint">Step off this section to start playing around with my tech stack!</p>
           <div className="skills-content">
             {skillsData.categories.map((category, index) => (
               <div key={index} className="skills-category">
