@@ -37,10 +37,15 @@ export default function makePlayer(k, posVec2, speed) {
     })
 
     player.onUpdate(() => {
-        if (!k.camPos().eq(player.pos)) {
+        
+        // Camera follows player with percentage-based offset for different screen sizes
+        const offsetX = k.width() * 0.4  // 40% of screen width
+        const offsetY = k.height() * 0.43 // 43% of screen height
+        const targetCamPos = k.vec2(player.pos.x + offsetX, player.pos.y + offsetY)
+        if (!k.camPos().eq(targetCamPos)) {
             k.tween(
                 k.camPos(), 
-                player.pos, 
+                targetCamPos, 
                 0.2, 
                 (newPost) => k.camPos(newPost),
                 k.easings.linear

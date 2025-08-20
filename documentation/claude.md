@@ -20,12 +20,23 @@ This is a portfolio website presented as a simplified 2D game, inspired by JSLeg
 6. Future expansion and iteration beyond the initial inspiration
 
 ## Development Notes
-- Last worked on: Game sections with improved visibility and keyboard controls
-- Recent progress: Fixed imports, added WASD controls, created first interactive section
-- Technical fixes: Store imports, camera zoom adjustments, color contrast improvements
+- **Latest Status**: Camera positioning fixed with percentage-based offset workaround
+- **Recent Progress**: 
+  - ✅ AboutModal.jsx created with auto-open/close functionality
+  - ✅ Fixed missing imports in SocialModal (useAtomValue)
+  - ✅ Fixed modal CSS positioning (uncommented z-index and top properties)
+  - ✅ Camera positioning issue resolved with percentage-based offset (40% width, 43% height)
+  - ⚠️ Using deprecated Kaplay methods (camPos, camScale) as newer API caused positioning issues
+- **Current Workaround**: Player appears centered using camera offset instead of fixing coordinate system
+- **Technical Notes**: Camera follows player with calculated offset to compensate for rendering issue
 
 ## Next Steps
-- [ ] Add multiple game sections (Projects, Skills, etc.)
-- [ ] Connect section interactions to modals
-- [ ] Populate with personal content
+- [ ] Test About modal functionality now that positioning is fixed
+- [ ] Connect Skills/Experience/Projects sections to their respective modals
+- [ ] Add kickable skills/logos as interactive elements
+- [ ] Populate with Thomas's actual content and details
 - [ ] Set up deployment pipeline
+
+## Session Notes
+- **Documentation Policy**: Claude will update this file with progress after each meaningful session
+- **Known Issues**: Kaplay coordinate system has unexplained offset - using workaround rather than root cause fix

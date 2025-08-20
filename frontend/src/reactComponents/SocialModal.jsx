@@ -1,4 +1,4 @@
-import { useAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import { isSocialModalVisibleAtom, selectedLinkAtom } from "../store";
 
 export default function SocialModal() { 

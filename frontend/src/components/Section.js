@@ -1,6 +1,6 @@
 import {PALETTE} from "../constants"
 
-export default function makeSection(k, posVec2, sectionName, onCollide) {
+export default function makeSection(k, posVec2, sectionName, onEnter, onExit) {
     const section = k.add([
         k.rect(200, 200, {radius: 10}),
         k.anchor("center"), 
@@ -17,10 +17,15 @@ export default function makeSection(k, posVec2, sectionName, onCollide) {
         k.pos(0, -150),
     ])
 
-    if (onCollide) {
-        const onCollideController = section.onCollide("player", () => {
-            onCollide(section)
-            onCollideController.cancel()
+    if (onEnter) {
+        section.onCollide("player", () => {
+            onEnter(section)
+        })
+    }
+
+    if (onExit) {
+        section.onCollideEnd("player", () => {
+            onExit(section)
         })
     }
 

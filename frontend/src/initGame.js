@@ -2,7 +2,7 @@ import makeSection from "./components/Section";
 import makeKaplayCtx from "./kaplayCtx";
 import { PALETTE } from "./constants";
 import makePlayer from "./entities/Player";
-import { cameraZoomValueAtom, store } from "./store";
+import { cameraZoomValueAtom, store, isAboutModalVisibleAtom } from "./store";
 
 export default async function initGame() {
     const k = makeKaplayCtx()
@@ -98,6 +98,11 @@ export default async function initGame() {
         "About", 
         (section) => {
             console.log("Entered About section!")
+            store.set(isAboutModalVisibleAtom, true)
+        },
+        (section) => {
+            console.log("Exited About section!")
+            store.set(isAboutModalVisibleAtom, false)
         }
     )
 
@@ -107,6 +112,9 @@ export default async function initGame() {
         "Skills",
         (section) => {
             console.log("Entered Skills section!")
+        },
+        (section) => {
+            console.log("Exited Skills section!")
         }
     )
 
@@ -116,6 +124,9 @@ export default async function initGame() {
         "Experience",
         (section) => {
             console.log("Entered Experience section!")
+        },
+        (section) => {
+            console.log("Exited Experience section!")
         }
     )
 
@@ -125,6 +136,9 @@ export default async function initGame() {
         "Projects",
         (section) => {
             console.log("Entered Projects section!")
+        },
+        (section) => {
+            console.log("Exited Projects section!")
         }
     )
 
