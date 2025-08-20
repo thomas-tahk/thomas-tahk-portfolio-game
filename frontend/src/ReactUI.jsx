@@ -1,4 +1,3 @@
-import CameraController from "./reactComponents/CameraController";
 import ControlsMessage from "./reactComponents/ControlsMessage";
 import AboutModal from "./reactComponents/AboutModal";
 import EmailModal from "./reactComponents/EmailModal";
@@ -11,7 +10,6 @@ export default function ReactUI() {
     return (
         <>
             <ControlsMessage />
-            <CameraController />
             <AboutModal />
             <EmailModal />
             <ProjectModal />
