@@ -1,4 +1,6 @@
 import { ZOOM_MAX_BOUND, ZOOM_MIN_BOUND } from "../constants"
+import { useAtom } from "jotai"
+import { cameraZoomValueAtom } from "../store"
 
 export default function CameraController() {
     const [camZoomValue, setCamZoomValue] = useAtom(cameraZoomValueAtom)

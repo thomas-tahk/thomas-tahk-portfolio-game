@@ -1,5 +1,5 @@
 import { DIAGONAL_FACTOR } from "../constants";
-import { isEmailModalVisibleAtom, isProjectModalVisibleAtom, isSocialModalVisibleAtom } from "../store";
+import { isEmailModalVisibleAtom, isProjectModalVisibleAtom, isSocialModalVisibleAtom, store } from "../store";
 
 // make instance of a player with the following properties
 export default function makePlayer(k, posVec2, speed) {
@@ -55,9 +55,30 @@ export default function makePlayer(k, posVec2, speed) {
         }
 
         player.direction = k.vec2(0, 0)
-        const worldMousePos = k.toWorld(k.mousePos())
-        if (isMouseDown) {
-            player.direction = worldMousePos.sub(player.pos).unit()
+        
+        // Keyboard controls (WASD + Arrow Keys)
+        if (k.isKeyDown("w") || k.isKeyDown("up")) {
+            player.direction.y -= 1
+        }
+        if (k.isKeyDown("s") || k.isKeyDown("down")) {
+            player.direction.y += 1
+        }
+        if (k.isKeyDown("a") || k.isKeyDown("left")) {
+            player.direction.x -= 1
+        }
+        if (k.isKeyDown("d") || k.isKeyDown("right")) {
+            player.direction.x += 1
+        }
+        
+        // Mouse controls (fallback if no keyboard input)
+        if (player.direction.eq(k.vec2(0, 0))) {
+            const worldMousePos = k.toWorld(k.mousePos())
+            if (isMouseDown) {
+                player.direction = worldMousePos.sub(player.pos).unit()
+            }
+        } else {
+            // Normalize keyboard direction for consistent speed
+            player.direction = player.direction.unit()
         }
         // implement animations based on direction of player
         // when to play idle

@@ -2,7 +2,7 @@ import makeSection from "./components/Section";
 import makeKaplayCtx from "./kaplayCtx";
 import { PALETTE } from "./constants";
 import makePlayer from "./entities/Player";
-import { cameraZoomValueAtom } from "./store";
+import { cameraZoomValueAtom, store } from "./store";
 
 export default async function initGame() {
     const k = makeKaplayCtx()
@@ -35,9 +35,9 @@ export default async function initGame() {
     k.loadFont("ibm-bold", "/fonts/IBMPlexSans-Bold.ttf");
     k.loadSprite("github-logo", "/logos/github-logo.png");
     k.loadSprite("linkedin-logo", "/logos/linkedin-logo.png");
-    k.loadSprite("youtube-logo", "/logos/youtube-logo.png");
-    k.loadSprite("x-logo", "/logos/x-logo.png");
-    k.loadSprite("substack-logo", "/logos/substack-logo.png");
+    // k.loadSprite("youtube-logo", "/logos/youtube-logo.png");
+    // k.loadSprite("x-logo", "/logos/x-logo.png");
+    // k.loadSprite("substack-logo", "/logos/substack-logo.png");
     k.loadSprite("javascript-logo", "/logos/js-logo.png");
     k.loadSprite("typescript-logo", "/logos/ts-logo.png");
     k.loadSprite("react-logo", "/logos/react-logo.png");
@@ -47,20 +47,20 @@ export default async function initGame() {
     k.loadSprite("css-logo", "/logos/css-logo.png");
     k.loadSprite("tailwind-logo", "/logos/tailwind-logo.png");
     k.loadSprite("python-logo", "/logos/python-logo.png");
-    k.loadSprite("email-logo", "/logos/email-logo.png");
+    // k.loadSprite("email-logo", "/logos/email-logo.png");
     // a shader is a program that runs on gpu that changes color of pixel on screen
     // kinda like a printing press for computer screens
     // we're using a fragment shader program written in glsl specific to kaplay
     k.loadShaderURL("tiledPattern", null, "/shaders/tiledPattern.frag");
     
-    // player character scaling - deprecated?
+    // player character scaling - adjusted for better overview
     if (k.width() < 1000) {
-        store.set(cameraZoomValueAtom, 0.5)
-        k.camScale(k.vec2(0.5))
+        store.set(cameraZoomValueAtom, 0.3)
+        k.camScale(k.vec2(0.3))
 
     } else {
-        store.set(cameraZoomValueAtom, 0.8)
-        k.camScale(k.vec2(0.8))
+        store.set(cameraZoomValueAtom, 0.5)
+        k.camScale(k.vec2(0.5))
     } 
 
     k.onUpdate(() => {
@@ -91,33 +91,41 @@ export default async function initGame() {
         tiledBackground.height = k.height()
         tiledBackground.uniform.u_aspect = k.width() / k.height()
     })
-    // intractive squares/areas for external stuff
+    // Interactive squares/areas for portfolio sections
     makeSection(
         k, 
         k.vec2(k.center().x, k.center().y - 400), 
         "About", 
-        (parent) => {
-    })
+        (section) => {
+            console.log("Entered About section!")
+        }
+    )
 
     makeSection(
         k, 
         k.vec2(k.center().x-400, k.center().y), 
         "Skills",
-        (parent) => {}
+        (section) => {
+            console.log("Entered Skills section!")
+        }
     )
 
     makeSection(
         k, 
         k.vec2(k.center().x+400, k.center().y), 
         "Experience",
-        (parent) => {}
+        (section) => {
+            console.log("Entered Experience section!")
+        }
     )
 
-     makeSection(
+    makeSection(
         k, 
         k.vec2(k.center().x, k.center().y+400), 
         "Projects",
-        (parent) => {}
+        (section) => {
+            console.log("Entered Projects section!")
+        }
     )
 
     // create player object in center of current canvas, with specified speed. feel free to change values
