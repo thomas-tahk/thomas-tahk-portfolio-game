@@ -7,11 +7,16 @@ export default function makeSection(k, posVec2, sectionName, onEnter, onExit) {
         k.area(),
         k.pos(posVec2),
         k.color(k.Color.fromHex("#f39c12")),
+        k.outline(2, k.Color.fromHex("#000000")),
         sectionName
     ])
 
     section.add([
-        k.text(sectionName, {font: "ibm-bold", size: 64}),
+        k.text(sectionName, {
+            font: "ibm-bold", 
+            size: 64,
+        }),
+        k.outline(4, k.Color.fromHex("#000000")),
         k.color(k.Color.fromHex("#f39c12")),
         k.anchor("center"),
         k.pos(0, -150),

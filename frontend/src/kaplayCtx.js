@@ -5,7 +5,7 @@ export default function makeKaplayCtx() {
         global: false,
         width: window.innerWidth,
         height: window.innerHeight,
-        pixelDensity: 1,
+        pixelDensity: 2,
         touchToMouse: true,
         debug: true, // TODO: set to false in production
         debugKey: "f1",

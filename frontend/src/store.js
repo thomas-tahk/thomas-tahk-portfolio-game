@@ -21,6 +21,34 @@ export const aboutDataAtom = atom({
     profilePic: "/path/to/profile.jpg" // placeholder path
 })
 
+export const isSkillsModalVisibleAtom = atom(false);
+export const skillsDataAtom = atom({
+    title: "Skills & Technologies",
+    categories: [
+        {
+            name: "Frontend",
+            skills: ["React", "JavaScript", "TypeScript", "HTML", "CSS", "Tailwind"]
+        },
+        {
+            name: "Backend",
+            skills: ["Node.js", "Python", "PostgreSQL"]
+        }
+    ]
+})
+
+export const isExperienceModalVisibleAtom = atom(false);
+export const experienceDataAtom = atom({
+    title: "Experience",
+    experiences: [
+        {
+            company: "Company Name",
+            position: "Position Title",
+            duration: "2023 - Present",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        }
+    ]
+})
+
 export const cameraZoomValueAtom = atom({value : 1})
 
 export const store = createStore()
