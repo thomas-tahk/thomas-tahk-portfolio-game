@@ -1,4 +1,5 @@
 import CameraController from "./reactComponents/CameraController";
+import ControlsMessage from "./reactComponents/ControlsMessage";
 import AboutModal from "./reactComponents/AboutModal";
 import EmailModal from "./reactComponents/EmailModal";
 import ProjectModal from "./reactComponents/ProjectModal";
@@ -9,8 +10,7 @@ import ExperienceModal from "./reactComponents/ExperienceModal";
 export default function ReactUI() {
     return (
         <>
-            <p className="controls-message">Tap/Click around to move</p>
-            
+            <ControlsMessage />
             <CameraController />
             <AboutModal />
             <EmailModal />

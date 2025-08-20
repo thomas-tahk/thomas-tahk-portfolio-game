@@ -91,6 +91,151 @@ export default async function initGame() {
         tiledBackground.height = k.height()
         tiledBackground.uniform.u_aspect = k.width() / k.height()
     })
+    // Background text for intro (shadow/outline effect) - moved up more
+    const socialSectionBg = k.add([
+        k.text("Hi, I'm Thomas Tahk, a developer for the web and video games", {
+            font: "ibm-bold",
+            size: 72,
+        }),
+        k.color(k.Color.fromHex("#000000")),
+        k.anchor("center"),
+        k.pos(k.center().x + 4, k.center().y - 1136),
+    ])
+
+    // Foreground text for intro - moved up more
+    const socialSection = k.add([
+        k.text("Hi, I'm Thomas Tahk, a developer for the web and video games", {
+            font: "ibm-bold",
+            size: 72,
+        }),
+        k.color(k.Color.fromHex("#f39c12")),
+        k.anchor("center"),
+        k.pos(k.center().x, k.center().y - 1140),
+    ])
+
+    // Load Gmail logo sprite
+    k.loadSprite("gmail-logo", "/logos/gmail-logo.svg");
+
+    // GitHub Logo - moved up more
+    const githubLogo = k.add([
+        k.sprite("github-logo"),
+        k.scale(0.15),
+        k.anchor("center"),
+        k.pos(k.center().x - 200, k.center().y - 1040),
+    ])
+
+    // LinkedIn Logo - moved up more
+    const linkedinLogo = k.add([
+        k.sprite("linkedin-logo"),
+        k.scale(0.25),
+        k.anchor("center"),
+        k.pos(k.center().x, k.center().y - 1040),
+    ])
+
+    // Gmail Logo - moved up more
+    const gmailLogo = k.add([
+        k.sprite("gmail-logo"),
+        k.scale(0.25),
+        k.anchor("center"),
+        k.pos(k.center().x + 200, k.center().y - 1040),
+    ])
+
+    // Text labels - shifted up by player height
+    // GitHub label background
+    k.add([
+        k.text("GitHub", {
+            font: "ibm-bold", 
+            size: 32,
+        }),
+        k.color(k.Color.fromHex("#000000")),
+        k.anchor("center"),
+        k.pos(k.center().x - 198, k.center().y - 922),
+    ])
+    // GitHub label foreground
+    k.add([
+        k.text("GitHub", {
+            font: "ibm-bold", 
+            size: 32,
+        }),
+        k.color(k.Color.fromHex("#f39c12")),
+        k.anchor("center"),
+        k.pos(k.center().x - 200, k.center().y - 920),
+    ])
+
+    // LinkedIn label background
+    k.add([
+        k.text("LinkedIn", {
+            font: "ibm-bold", 
+            size: 32,
+        }),
+        k.color(k.Color.fromHex("#000000")),
+        k.anchor("center"),
+        k.pos(k.center().x + 2, k.center().y - 922),
+    ])
+    // LinkedIn label foreground
+    k.add([
+        k.text("LinkedIn", {
+            font: "ibm-bold", 
+            size: 32,
+        }),
+        k.color(k.Color.fromHex("#f39c12")),
+        k.anchor("center"),
+        k.pos(k.center().x, k.center().y - 920),
+    ])
+
+    // Gmail label background
+    k.add([
+        k.text("Gmail", {
+            font: "ibm-bold", 
+            size: 32,
+        }),
+        k.color(k.Color.fromHex("#000000")),
+        k.anchor("center"),
+        k.pos(k.center().x + 202, k.center().y - 922),
+    ])
+    // Gmail label foreground
+    k.add([
+        k.text("Gmail", {
+            font: "ibm-bold", 
+            size: 32,
+        }),
+        k.color(k.Color.fromHex("#f39c12")),
+        k.anchor("center"),
+        k.pos(k.center().x + 200, k.center().y - 920),
+    ])
+
+    // Social circles - shifted up by player height
+    const githubCircle = k.add([
+        k.circle(80),
+        k.anchor("center"),
+        k.area(),
+        k.pos(k.center().x - 200, k.center().y - 820),
+        k.color(k.Color.fromHex("#d35400")), // Darker orange
+        k.outline(4, k.Color.fromHex("#000000")),
+        "github-social"
+    ])
+
+    const linkedinCircle = k.add([
+        k.circle(80),
+        k.anchor("center"),
+        k.area(),
+        k.pos(k.center().x, k.center().y - 820),
+        k.color(k.Color.fromHex("#d35400")), // Darker orange
+        k.outline(4, k.Color.fromHex("#000000")),
+        "linkedin-social"
+    ])
+
+    const gmailCircle = k.add([
+        k.circle(80),
+        k.anchor("center"),
+        k.area(),
+        k.pos(k.center().x + 200, k.center().y - 820),
+        k.color(k.Color.fromHex("#d35400")), // Darker orange
+        k.outline(4, k.Color.fromHex("#000000")),
+        "gmail-social"
+    ])
+
+
     // Interactive squares/areas for portfolio sections
     makeSection(
         k, 
@@ -148,7 +293,7 @@ export default async function initGame() {
         }
     )
 
-    // create player object in center of current canvas, with specified speed. feel free to change values
-    makePlayer(k, k.vec2(k.center()), 700)
+    // create player object north of About section, between social section and orange sections
+    makePlayer(k, k.vec2(k.center().x, k.center().y - 700), 700)
 
 }
