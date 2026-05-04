@@ -7,21 +7,31 @@ export default function ProjectModal() {
 
   return (
     isVisible && (
-      <div className="modal">
+      <div className="modal projects-modal">
         <div className="modal-content">
           <h1>{projectData.title}</h1>
-          <div className="modal-btn-container">
-            {projectData.links.map((linkData) => (
-              <button
-                key={linkData.id}
-                className={"modal-btn"}
-                onClick={() => {
-                  window.open(linkData.link, "_blank");
-                }}
-              >
-                {linkData.name}
-              </button>
+          <div className="projects-list">
+            {projectData.projects.map((project) => (
+              <div key={project.id} className="project-item">
+                <h2>{project.name}</h2>
+                <p className="project-description">{project.description}</p>
+                <div className="project-links">
+                  {project.links.map((linkData) => (
+                    <button
+                      key={linkData.id}
+                      className={"modal-btn project-link-btn"}
+                      onClick={() => {
+                        window.open(linkData.link, "_blank");
+                      }}
+                    >
+                      {linkData.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
             ))}
+          </div>
+          <div className="modal-btn-container">
             <button
               className={"modal-btn"}
               onClick={() => {

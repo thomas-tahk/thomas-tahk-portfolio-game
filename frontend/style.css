@@ -190,6 +190,59 @@ p {
     text-align: center;
 }
 
+.profile-photo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 2px solid var(--color1);
+    border-radius: 8px;
+}
+
+/* Projects Modal Specific Styles */
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.project-item {
+    border-bottom: 1px solid var(--color1);
+    padding-bottom: 14px;
+}
+
+.project-item:last-child {
+    border-bottom: none;
+}
+
+.project-item h2 {
+    color: var(--color1);
+    font-size: 1.3rem;
+    margin: 0 0 6px 0;
+}
+
+.project-description {
+    color: var(--color1);
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.project-links {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.project-link-btn {
+    margin-top: 0;
+    font-size: 1rem;
+    padding: 6px 14px;
+    min-height: 0;
+    max-height: none;
+}
+
 /* Skills Modal Specific Styles */
 .skills-content {
     display: flex;

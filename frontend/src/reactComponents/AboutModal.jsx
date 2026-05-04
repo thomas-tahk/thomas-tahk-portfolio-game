@@ -15,10 +15,11 @@ export default function AboutModal() {
               <p>{aboutData.description}</p>
             </div>
             <div className="about-image">
-              <div className="profile-placeholder">
-                {/* Placeholder for profile image */}
-                <span>Profile Photo</span>
-              </div>
+              <img
+                className="profile-photo"
+                src={aboutData.profilePic}
+                alt={`${aboutData.name} headshot`}
+              />
             </div>
           </div>
         </div>
