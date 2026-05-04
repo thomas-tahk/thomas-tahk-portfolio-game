@@ -17,8 +17,8 @@ export const chosenProjectDataAtom = atom({
             name: "PlotPlan",
             description: "Solo hackathon submission — a planning tool for small-scale farmers that combines user inputs with AI-generated recommendations anchored on USDA data. Next.js 16, React 19, TypeScript, Tailwind v4, Anthropic SDK, Supabase.",
             links: [
-                { id: 0, name: "GitHub", link: "https://github.com/thomas-tahk/plotplan" },
-                { id: 1, name: "Live", link: "https://plotplan.vercel.app" }
+                { id: 0, name: "GitHub", link: "https://github.com/thomas-tahk/plot-plan" },
+                { id: 1, name: "Live", link: "https://plot-plan.vercel.app" }
             ]
         },
         {
@@ -27,7 +27,7 @@ export const chosenProjectDataAtom = atom({
             description: "Full-stack recipe recommendation app that surfaces results based on a user's available pantry ingredients. React/TypeScript/Vite frontend, Node/Express/PostgreSQL backend deployed to Digital Ocean.",
             links: [
                 { id: 0, name: "GitHub", link: "https://github.com/thomas-tahk/amugonna" },
-                { id: 1, name: "Live", link: "https://amugonna.com" }
+                { id: 1, name: "Live", link: "https://amugonna-client.vercel.app/" }
             ]
         },
         {
@@ -35,8 +35,8 @@ export const chosenProjectDataAtom = atom({
             name: "Dormant",
             description: "Client-side sleep hygiene tracker built as a Health Data Innovators capstone. Exports FHIR R4 Bundles with LOINC-coded Observations for standards-compliant health data portability. Next.js 16, TypeScript, Tailwind v4, localStorage-only — no backend.",
             links: [
-                { id: 0, name: "GitHub", link: "https://github.com/thomas-tahk/dormant" },
-                { id: 1, name: "Live", link: "https://dormant.vercel.app" }
+                { id: 0, name: "GitHub", link: "https://github.com/thomas-tahk/Dormant" },
+                { id: 1, name: "Live", link: "https://dormant-rho.vercel.app/" }
             ]
         },
         {
@@ -44,8 +44,8 @@ export const chosenProjectDataAtom = atom({
             name: "Shows4Us",
             description: "Performing arts discovery platform for finding, researching, and ticketing musicals and live events. React 19/TypeScript/Vite 7 frontend, Node/Express backend with PostgreSQL via Supabase, Ticketmaster Discovery API integration.",
             links: [
-                { id: 0, name: "GitHub", link: "https://github.com/thomas-tahk/shows4us" },
-                { id: 1, name: "Live", link: "https://shows4us.vercel.app" }
+                { id: 0, name: "GitHub", link: "https://github.com/thomas-tahk/shows-for-us" },
+                { id: 1, name: "Live", link: "https://shows-for-us.vercel.app/" }
             ]
         }
     ]
